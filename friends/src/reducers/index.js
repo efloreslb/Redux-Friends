@@ -53,7 +53,7 @@ export default (state = initialState, action) => {
       case FETCH_FAILURE: {
          return {
             ...state, 
-            errorStatusCode: action.payload.status
+            errorStatusCode: action.payload
          }
       }
       default:

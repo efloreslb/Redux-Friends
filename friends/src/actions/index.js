@@ -27,11 +27,10 @@ export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_FAILURE = "FETCH_FAILURE";
 
 export const getFriends = () => dispatch => {
-   console.log("inside action");
    dispatch({type: FETCH_START});
-   axios.get('http://localhost:5000/api/friends', {headers: {Authorization: localStorage.getItem('token')}})
+   axios.get('http://localhost:5000/api/friends', {headers: {authorization: localStorage.getItem('token')}})
       .then(res => {
-         console.log(res);
+         console.log("SUCCESS HOORAY!", res);
          dispatch({type: FETCH_SUCCESS, payload: res.data})
       })
       .catch(err => {

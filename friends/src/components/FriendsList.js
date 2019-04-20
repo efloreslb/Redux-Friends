@@ -5,7 +5,6 @@ import { getFriends } from '../actions';
 class FriendsList extends Component {
 
    componentDidMount() {
-      localStorage.setItem("token", "token")
       this.props.getFriends();
    }
    
@@ -14,7 +13,11 @@ class FriendsList extends Component {
       return (
          <div>
             <h2>Tada! These are your friends</h2>
-            {this.props.friends.map(friend => <>{friend}</>)}
+            {this.props.friends.map((friend, index) => (
+               <div key={index}>
+                  {friend.name}
+               </div>
+            ))}
          </div>
       )
    }

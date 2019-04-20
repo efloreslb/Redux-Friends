@@ -22,6 +22,7 @@ class App extends Component {
             <Link to='/friends'>Friends</Link>
           </li>
         </ul>
+        
         <Route exact path="/login" component={Login} />
         <Route path="/friends" component={FriendsList} />
         <PrivateRoute exact path="/protected" component={FriendsList} />
