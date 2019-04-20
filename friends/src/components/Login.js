@@ -23,6 +23,7 @@ class Login extends Component {
       e.preventDefault();
       this.props.login(this.state.credentials)
          .then(() => this.props.history.push("/protected"))
+         .catch(err => console.log(err))
    }
    
    render() {
@@ -30,7 +31,7 @@ class Login extends Component {
          <form onSubmit={this.handleLogin}>
             <input type="text" name="username" placeholder="Username" value={this.state.credentials.username} onChange={this.handleChange}></input>
             <input type="password" name="password" placeholder="Password" value={this.state.credentials.password} onChange={this.handleChange}></input>
-            <button>Login</button>
+            <button type="submit">Login</button>
             {this.props.loggingIn ? "Logging in..." : ''}
          </form>
       )

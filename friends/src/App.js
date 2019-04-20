@@ -18,8 +18,12 @@ class App extends Component {
           <li>
             <Link to='/protected'>Protected Content</Link>
           </li>
+          <li>
+            <Link to='/friends'>Friends</Link>
+          </li>
         </ul>
         <Route exact path="/login" component={Login} />
+        <Route path="/friends" component={FriendsList} />
         <PrivateRoute exact path="/protected" component={FriendsList} />
       </div>
     );
