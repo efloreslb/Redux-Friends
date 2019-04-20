@@ -15,9 +15,6 @@ export const login = credentials => dispatch => {
       })
       .catch(err => {
          console.log("login error:", err);
-         // if (err.response && err.response.status === 403) {
-         //    localStorage.removeItem('token');
-         // }
          dispatch({type: LOGIN_FAILURE, payload: err});
       })
 }
@@ -35,9 +32,6 @@ export const getFriends = () => dispatch => {
       })
       .catch(err => {
          console.log(err);
-         // if (err.response.status === 403) {
-         //    localStorage.removeItem('token')
-         // }
          dispatch({type: FETCH_FAILURE, payload: err})
       });
 }

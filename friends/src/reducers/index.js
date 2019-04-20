@@ -66,7 +66,6 @@ export default (state = initialState, action) => {
          }
       }
       case POST_SUCCESS: {
-         console.log(action.payload);
          return {
             ...state,
             fetchingFriends: false,

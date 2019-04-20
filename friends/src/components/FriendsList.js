@@ -14,7 +14,6 @@ class FriendsList extends Component {
    }
 
    handleChange = e => {
-      console.log('handling');
       this.setState({
          ...this.state,
          [e.target.name]: e.target.value
@@ -24,17 +23,19 @@ class FriendsList extends Component {
    addFriend = e => {
       e.preventDefault();
       this.props.postFriend(this.state);
+      this.setState({
+         name: '',
+         age: '',
+         email: ''
+      })
    }
    
    render() {
+      console.log("FriendsList rendered", this.props.friends)
+      if (this.props.fetchingFriends) return <h1>Loading...</h1>
       return (
          <div className="friendList">
             <h2>Tada! These are all your friends</h2>
-            {this.props.friends.map((friend, index) => (
-               <div key={index} className="friendBox">
-                  <p>{friend.name}, {friend.age}, {friend.email}</p>
-               </div>
-            ))}
 
             <form onSubmit={this.addFriend}>
                <input onChange={this.handleChange} value={this.state.name} name="name" placeholder="Name"/>
@@ -42,6 +43,12 @@ class FriendsList extends Component {
                <input onChange={this.handleChange} value={this.state.email} name="email" placeholder="Email"/>
                <button type="submit">Add Friend</button>
             </form>
+
+            {this.props.friends.map((friend, index) => ( //BUG: Does not render after new post
+               <div key={index} className="friendBox">
+                  <p>{friend.name}, {friend.age}, {friend.email}</p>
+               </div>
+            ))}
          </div>
       )
    }
@@ -49,7 +56,8 @@ class FriendsList extends Component {
 
 const mapStateToProps = state => {
    return {
-      friends: state.friends
+      friends: state.friends,
+      fetchingFriends: state.fetchingFriends
    }
 }
 
