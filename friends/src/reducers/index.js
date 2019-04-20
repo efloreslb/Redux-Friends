@@ -3,7 +3,10 @@ import {LOGIN_START,
    LOGIN_FAILURE, 
    FETCH_START, 
    FETCH_SUCCESS, 
-   FETCH_FAILURE} from '../actions';
+   FETCH_FAILURE,
+   POST_START,
+   POST_SUCCESS,
+   POST_FAILURE} from '../actions';
 
 
 const initialState = {
@@ -35,7 +38,6 @@ export default (state = initialState, action) => {
          }
       }
       case FETCH_START: {
-         console.log("fetch start");
          return {
             ...state, 
             error: "",
@@ -54,6 +56,28 @@ export default (state = initialState, action) => {
          return {
             ...state, 
             errorStatusCode: action.payload
+         }
+      }
+      case POST_START: {
+         return {
+            ...state,
+            fetchingFriends: true,
+            friends: action.payload
+         }
+      }
+      case POST_SUCCESS: {
+         console.log(action.payload);
+         return {
+            ...state,
+            fetchingFriends: false,
+            friends: action.payload
+         }
+      }
+      case POST_FAILURE: {
+         return {
+            ...state,
+            error: action.payload,
+            fetchingFriends: false
          }
       }
       default:

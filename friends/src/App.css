@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  width: 500px;
+  margin: 0 auto;
+  background-color: #ededed;
+  padding: 5px;
 }
 
 .App-logo {
@@ -30,4 +34,35 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+body {
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  padding: 5px;
+}
+
+li a{
+  background-color: lightskyblue;
+  padding: 10px;
+  margin: 10px;
+  color: darkblue;
+  text-decoration: none;
+}
+
+.selected {
+  background-color: dodgerblue;
+}
+
+.friendBox {
+  background-color: bisque;
+  padding: 5px 10px;
+}
+
+.friendBox p{
+  text-align: left;
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Route, Link} from 'react-router-dom';
+import {Route, NavLink} from 'react-router-dom';
 
 import Login from './components/Login';
 import FriendsList from './components/FriendsList';
@@ -13,18 +13,18 @@ class App extends Component {
       <div className="App">
         <ul>
           <li>
-            <Link to='/login'>Login</Link>
+            <NavLink to='/login' activeClassName="selected">Login</NavLink>
           </li>
           <li>
-            <Link to='/protected'>Protected Content</Link>
+            <NavLink to='/protected' activeClassName="selected">Protected Content</NavLink>
           </li>
-          <li>
+          {/* <li>
             <Link to='/friends'>Friends</Link>
-          </li>
+          </li> */}
         </ul>
-        
+
         <Route exact path="/login" component={Login} />
-        <Route path="/friends" component={FriendsList} />
+        {/* <Route path="/friends" component={FriendsList} /> */}
         <PrivateRoute exact path="/protected" component={FriendsList} />
       </div>
     );
